@@ -1,0 +1,8 @@
+headerimage_conf_form:
+  path: /ek_fejlec/configuration
+  methods: [GET, POST]
+  defaults:
+    _controller: 'PrestaShop\Module\Ek_Fejlec\Controller\HeaderimageController::index'
+    # Needed to work with tab system
+    _legacy_controller: AdminEk_Fejlec
+    _legacy_link: AdminEk_Fejlec

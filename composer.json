@@ -1,0 +1,25 @@
+
+
+{
+  "name": "sfouilleul/ek_fejlec",
+  "description": "Fejléc",
+  "license": "AFL-3.0",
+  "authors": [
+    {
+      "name": "Simon Fouilleul"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PrestaShop\\Module\\Ek_Fejlec\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.1.0"
+  },
+  "config": {
+    "preferred-install": "dist",
+    "prepend-autoloader": false
+  },
+  "type": "prestashop-module"
+}

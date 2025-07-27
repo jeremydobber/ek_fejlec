@@ -1,0 +1,28 @@
+#ek_fejlec_block_home {
+  width: 100%;
+  height: fit-content;
+  position: relative;
+}
+
+#ek_fejlec_block_home .text_block {
+  text-transform: uppercase;
+  position: absolute;
+  top: 42%;
+  width: 100% !important;
+  text-align: center;
+  margin: auto;
+  z-index: 50;
+}
+
+#ek_fejlec_block_home h4 {
+  font-size: 3rem;
+}
+
+#ek_fejlec_block_home p {
+  font-size: 1rem;
+}
+
+#ek_fejlec_block_home img {
+  max-width: 100%;
+  height: auto;
+}
