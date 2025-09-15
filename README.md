@@ -1,5 +1,6 @@
 ## Hero section for Prestashop home page
 
-This is just a very basic module that allows an administrator to configure an image and some text on top of it to appear on the home page of a prestashop site.
-In this first version, the image is stored in the local image directory in the module directory so you'll lose it if you reset the module!
-The code is "supposed" to be compatible with Prestashop 9 and passes the automatic module validation tests. 
+This is just a very basic module that allows an administrator to configure an image and some text on top of it to appear on the home page as well as the cms about page of a prestashop site.
+The image is stored in a local image directory inside the module folder so you'll lose it if you reset the module!
+However, it also handles the deletion of files if you decide to change the image through the configuration page in the back office so that there is never more than the required files in the image directory.
+The code is compatible with Prestashop 9 and later versions only and passes the automatic module validation tests. 
