@@ -33,7 +33,7 @@ class Ek_Fejlec extends Module
         $this->author = 'Simon Fouilleul';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = [
-            'min' => '9.0.0.0',
+            'min' => '9.0.0',
             'max' => '9.99.99',
         ];
         $this->bootstrap = true;
@@ -58,7 +58,7 @@ class Ek_Fejlec extends Module
 
         return
             parent::install()
-            && $this->registerHook('displayHome')
+            && $this->registerHook('displayWrapperTop')
             && $this->registerHook('actionFrontControllerSetMedia')
             && Configuration::updateValue('MYMODULE_NAME', 'Headerimage');
     }
@@ -67,7 +67,7 @@ class Ek_Fejlec extends Module
     {
         return
             parent::uninstall()
-            && $this->unregisterHook('displayHome')
+            && $this->unregisterHook('displayWrapperTop')
             && $this->unregisterHook('actionFrontControllerSetMedia')
             && $this->deleteLocalMedia()
             && Configuration::deleteByName('MYMODULE_NAME');
@@ -89,13 +89,16 @@ class Ek_Fejlec extends Module
         Tools::redirectAdmin($route);
     }
 
-    public function hookDisplayHome($params)
+    public function hookDisplayWrapperTop()
     {
         $this->context->smarty->assign([
             'ek_fejlec_name' => Configuration::get('MYMODULE_NAME'),
-            'ek_fejlec_title' => Configuration::get('EK_FEJLEC_TITLE'),
-            'ek_fejlec_subtitle' => Configuration::get('EK_FEJLEC_SUBTITLE'),
-            'ek_fejlec_image' => Configuration::get('EK_FEJLEC_IMAGE'),
+            'ek_fejlec_index_title' => Configuration::get('EK_FEJLEC_INDEX_TITLE'),
+            'ek_fejlec_index_subtitle' => Configuration::get('EK_FEJLEC_INDEX_SUBTITLE'),
+            'ek_fejlec_index_image' => Configuration::get('EK_FEJLEC_INDEX_IMAGE'),
+            'ek_fejlec_about_title' => Configuration::get('EK_FEJLEC_ABOUT_TITLE'),
+            'ek_fejlec_about_subtitle' => Configuration::get('EK_FEJLEC_ABOUT_SUBTITLE'),
+            'ek_fejlec_about_image' => Configuration::get('EK_FEJLEC_ABOUT_IMAGE'),
         ]);
 
         return $this->display(__FILE__, 'ek_fejlec.tpl');

@@ -38,18 +38,34 @@ class HeaderimageFormType extends TranslatorAwareType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class, [
-                'label' => $this->trans('Cím', 'Modules.Ek_Fejlec.Admin'),
-                'help' => $this->trans('Fakultatív', 'Modules.Ek_Fejlec.Admin'),
+            ->add('index_title', TextType::class, [
+                'label' => $this->trans('Home page title', 'Modules.Ek_Fejlec.Admin'),
+                'help' => $this->trans('Optional', 'Modules.Ek_Fejlec.Admin'),
                 'required' => false,
             ])
-            ->add('subtitle', TextType::class, [
-                'label' => $this->trans('Szöveg', 'Modules.Ek_Fejlec.Admin'),
-                'help' => $this->trans('Fakultatív', 'Modules.Ek_Fejlec.Admin'),
+            ->add('index_subtitle', TextType::class, [
+                'label' => $this->trans('Home page subtitle', 'Modules.Ek_Fejlec.Admin'),
+                'help' => $this->trans('Optional', 'Modules.Ek_Fejlec.Admin'),
                 'required' => false,
             ])
-            ->add('imageFile', FileType::class, [
-                'help' => $this->trans('Elfogadott formátumok: webp, png, jpeg/jpg.', 'Modules.Ek_Fejlec.Admin'),
+            ->add('index_image', FileType::class, [
+                'help' => $this->trans('Allowed file formats: webp, png, jpeg/jpg.', 'Modules.Ek_Fejlec.Admin'),
+                'constraints' => [new File(extensions: ['webp', 'png', 'jpg', 'JPEG', 'jpeg', 'PNG', 'JPG'])],
+                'mapped' => false,
+                'required' => false,
+            ])
+            ->add('about_title', TextType::class, [
+                'label' => $this->trans('About page title', 'Modules.Ek_Fejlec.Admin'),
+                'help' => $this->trans('Optional', 'Modules.Ek_Fejlec.Admin'),
+                'required' => false,
+            ])
+            ->add('about_subtitle', TextType::class, [
+                'label' => $this->trans('About page subtitle', 'Modules.Ek_Fejlec.Admin'),
+                'help' => $this->trans('Optional', 'Modules.Ek_Fejlec.Admin'),
+                'required' => false,
+            ])
+            ->add('about_image', FileType::class, [
+                'help' => $this->trans('Allowed file formats: webp, png, jpeg/jpg.', 'Modules.Ek_Fejlec.Admin'),
                 'constraints' => [new File(extensions: ['webp', 'png', 'jpg', 'JPEG', 'jpeg', 'PNG', 'JPG'])],
                 'mapped' => false,
                 'required' => false,

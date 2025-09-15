@@ -19,6 +19,7 @@
  * @copyright Since 2025 Jeremy Dobberman
  * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  */
+
 declare(strict_types=1);
 
 namespace PrestaShop\Module\Ek_Fejlec\Form;
@@ -35,9 +36,12 @@ use PrestaShop\PrestaShop\Core\ConfigurationInterface;
  */
 final class HeaderimageTextDataConfiguration implements DataConfigurationInterface
 {
-    public const EK_FEJLEC_TITLE = 'EK_FEJLEC_TITLE';
-    public const EK_FEJLEC_SUBTITLE = 'EK_FEJLEC_SUBTITLE';
-    public const EK_FEJLEC_IMAGE = 'EK_FEJLEC_IMAGE';
+    public const EK_FEJLEC_INDEX_TITLE = 'EK_FEJLEC_INDEX_TITLE';
+    public const EK_FEJLEC_INDEX_SUBTITLE = 'EK_FEJLEC_INDEX_SUBTITLE';
+    public const EK_FEJLEC_INDEX_IMAGE = 'EK_FEJLEC_INDEX_IMAGE';
+    public const EK_FEJLEC_ABOUT_TITLE = 'EK_FEJLEC_ABOUT_TITLE';
+    public const EK_FEJLEC_ABOUT_SUBTITLE = 'EK_FEJLEC_ABOUT_SUBTITLE';
+    public const EK_FEJLEC_ABOUT_IMAGE = 'EK_FEJLEC_ABOUT_IMAGE';
     public const CONFIG_MAXLENGTH = 32;
 
     /**
@@ -54,8 +58,10 @@ final class HeaderimageTextDataConfiguration implements DataConfigurationInterfa
     {
         $return = [];
 
-        $return['title'] = $this->configuration->get(static::EK_FEJLEC_TITLE);
-        $return['subtitle'] = $this->configuration->get(static::EK_FEJLEC_SUBTITLE);
+        $return['index_title'] = $this->configuration->get(static::EK_FEJLEC_INDEX_TITLE);
+        $return['index_subtitle'] = $this->configuration->get(static::EK_FEJLEC_INDEX_SUBTITLE);
+        $return['about_title'] = $this->configuration->get(static::EK_FEJLEC_ABOUT_TITLE);
+        $return['about_subtitle'] = $this->configuration->get(static::EK_FEJLEC_ABOUT_SUBTITLE);
 
         return $return;
     }
@@ -65,18 +71,32 @@ final class HeaderimageTextDataConfiguration implements DataConfigurationInterfa
         $errors = [];
 
         if ($this->validateConfiguration($configuration)) {
-            if (isset($configuration['title'])) {
-                if (strlen($configuration['title']) <= static::CONFIG_MAXLENGTH) {
-                    $this->configuration->set(static::EK_FEJLEC_TITLE, $configuration['title']);
+            if (isset($configuration['index_title'])) {
+                if (strlen($configuration['index_title']) <= static::CONFIG_MAXLENGTH) {
+                    $this->configuration->set(static::EK_FEJLEC_INDEX_TITLE, $configuration['index_title']);
                 } else {
-                    $errors[] = 'EK_FEJLEC_TITLE value is too long';
+                    $errors[] = 'Home page title value is too long';
                 }
             }
-            if (isset($configuration['subtitle'])) {
-                if (strlen($configuration['subtitle']) <= static::CONFIG_MAXLENGTH) {
-                    $this->configuration->set(static::EK_FEJLEC_SUBTITLE, $configuration['subtitle']);
+            if (isset($configuration['index_subtitle'])) {
+                if (strlen($configuration['index_subtitle']) <= static::CONFIG_MAXLENGTH) {
+                    $this->configuration->set(static::EK_FEJLEC_INDEX_SUBTITLE, $configuration['index_subtitle']);
                 } else {
-                    $errors[] = 'EK_FEJLEC_SUBTITLE value is too long';
+                    $errors[] = 'Home page subtitle value is too long';
+                }
+            }
+            if (isset($configuration['about_title'])) {
+                if (strlen($configuration['about_title']) <= static::CONFIG_MAXLENGTH) {
+                    $this->configuration->set(static::EK_FEJLEC_ABOUT_TITLE, $configuration['about_title']);
+                } else {
+                    $errors[] = 'About page title value is too long';
+                }
+            }
+            if (isset($configuration['about_subtitle'])) {
+                if (strlen($configuration['about_subtitle']) <= static::CONFIG_MAXLENGTH) {
+                    $this->configuration->set(static::EK_FEJLEC_ABOUT_SUBTITLE, $configuration['about_subtitle']);
+                } else {
+                    $errors[] = 'About page subtitle value is too long';
                 }
             }
         }
@@ -92,6 +112,10 @@ final class HeaderimageTextDataConfiguration implements DataConfigurationInterfa
      */
     public function validateConfiguration(array $configuration): bool
     {
-        return isset($configuration['title']) || isset($configuration['subtitle']);
+        return
+            isset($configuration['index_title'])
+            || isset($configuration['index_subtitle'])
+            || isset($configuration['about_title'])
+            || isset($configuration['about_subtitle']);
     }
 }

@@ -2,6 +2,7 @@
   width: 100%;
   height: fit-content;
   position: relative;
+  box-shadow: 0 0 30px black;
 }
 
 #ek_fejlec_block_home .text_block {

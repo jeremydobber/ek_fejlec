@@ -19,6 +19,7 @@
  * @copyright Since 2025 Jeremy Dobberman
  * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  */
+
 declare(strict_types=1);
 
 namespace PrestaShop\Module\Ek_Fejlec\Controller;
@@ -44,14 +45,16 @@ class HeaderimageController extends PrestaShopAdminController
         $textForm = $textFormDataHandler->getForm();
         $textForm->handleRequest($request);
 
-        if (!is_null($textForm->get('imageFile')->getData())) {
-            $uploadedFile = $textForm->get('imageFile')->getData();
-
-            $filePath = $this->upload($uploadedFile);
-            \Configuration::updateValue('EK_FEJLEC_IMAGE', $filePath);
-        }
-
         if ($textForm->isSubmitted() && $textForm->isValid()) {
+            foreach (['index_image', 'about_image'] as $imageFile) {
+                if (!is_null($textForm->get($imageFile)->getData())) {
+                    $file = $textForm->get($imageFile)->getData();
+                    $filePath = $this->upload($file, $imageFile);
+                    $config_key = strtoupper($imageFile);
+                    \Configuration::updateValue("EK_FEJLEC_{$config_key}", $filePath);
+                }
+            }
+
             /** You can return array of errors in form handler and they can be displayed to user with flashErrors */
             $errors = $textFormDataHandler->save($textForm->getData());
 
@@ -69,19 +72,12 @@ class HeaderimageController extends PrestaShopAdminController
         ]);
     }
 
-    public function upload(UploadedFile $uploadedFile)
+    public function upload(UploadedFile $uploadedFile, string $form_field)
     {
-        $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-        // this is needed to safely include the file name as part of the URL
-        // $safeFilename = $slugger->slug($originalFilename);
-        // $newFilename = $safeFilename . '-' . uniqid() . '.' . $uploadedFile->guessExtension();
-
-        $newFilename = $originalFilename . '.' . $uploadedFile->guessExtension();
-
+        $newFilename = $form_field . '.' . $uploadedFile->guessExtension();
         $localstore = 'modules' . DIRECTORY_SEPARATOR . 'ek_fejlec' . DIRECTORY_SEPARATOR . 'images';
         $destination = $this->getParameter('kernel.project_dir') . DIRECTORY_SEPARATOR . $localstore;
-
-        $images = glob($destination . '/*.{webp,png,jpeg,jpg,JPG,JPEG}', \GLOB_BRACE);
+        $images = glob($destination . DIRECTORY_SEPARATOR . $form_field . '..*', \GLOB_BRACE);
         foreach ($images as $image) {
             unlink($image);
         }
@@ -91,6 +87,6 @@ class HeaderimageController extends PrestaShopAdminController
             $newFilename,
         );
 
-        return $localstore . DIRECTORY_SEPARATOR . $newFilename;
+        return DIRECTORY_SEPARATOR . $localstore . DIRECTORY_SEPARATOR . $newFilename;
     }
 }

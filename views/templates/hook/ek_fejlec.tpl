@@ -20,16 +20,25 @@
  *}
 
 <!-- Block ek_fejlec -->
-<div id="ek_fejlec_block_home" class="block">
-    <img src="{$urls.base_url}{$ek_fejlec_image}">
-    <div class="text_block">
-        <h4>{l s={$ek_fejlec_title} mod='ek_fejlec'}</h4>
-        <div class="block_content">
-            <p> {if isset($ek_fejlec_subtitle)}
-                    {$ek_fejlec_subtitle}
-                {/if}
-            </p>
+{if {$page.page_name} === "index"}
+    <div id="ek_fejlec_block_home" class="block">
+        {if isset($ek_fejlec_index_image)}
+            <img src="{$ek_fejlec_index_image}">
+        {/if}
+        <div class="text_block">
+            <h4>{$ek_fejlec_index_title}</h4>
+            <p>{$ek_fejlec_index_subtitle}</p>
         </div>
     </div>
-</div>
+{else if {$page.body_classes["cms-id-4"]} == {true}}
+    <div id="ek_fejlec_block_home" class="block">
+        {if isset($ek_fejlec_about_image)}
+            <img src="{$ek_fejlec_about_image}">
+        {/if}
+        <div class="text_block">
+            <h4>{$ek_fejlec_about_title}</h4>
+            <p>{$ek_fejlec_index_subtitle}</p>
+        </div>
+    </div>
+{/if}
 <!-- /Block ek_fejlec -->
