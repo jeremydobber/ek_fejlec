@@ -1,2 +1,3 @@
-config_hu.xml
+config_*.xml
 images/*.['png','webp']
+vendor

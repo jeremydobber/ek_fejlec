@@ -75,18 +75,19 @@ class HeaderimageController extends PrestaShopAdminController
     public function upload(UploadedFile $uploadedFile, string $form_field)
     {
         $newFilename = $form_field . '.' . $uploadedFile->guessExtension();
-        $localstore = 'modules' . DIRECTORY_SEPARATOR . 'ek_fejlec' . DIRECTORY_SEPARATOR . 'images';
-        $destination = $this->getParameter('kernel.project_dir') . DIRECTORY_SEPARATOR . $localstore;
-        $images = glob($destination . DIRECTORY_SEPARATOR . $form_field . '..*', \GLOB_BRACE);
+        $module_file_dir = 'images';
+        $relpath = _MODULE_DIR_ . 'ek_fejlec' . DIRECTORY_SEPARATOR . $module_file_dir;
+        $abspath = _PS_MODULE_DIR_ . 'ek_fejlec' . DIRECTORY_SEPARATOR . $module_file_dir;
+        $images = glob($abspath . DIRECTORY_SEPARATOR . $form_field . '\..*', \GLOB_BRACE);
         foreach ($images as $image) {
             unlink($image);
         }
 
         $uploadedFile->move(
-            $destination,
+            $abspath,
             $newFilename,
         );
 
-        return DIRECTORY_SEPARATOR . $localstore . DIRECTORY_SEPARATOR . $newFilename;
+        return $relpath . DIRECTORY_SEPARATOR . $newFilename;
     }
 }
