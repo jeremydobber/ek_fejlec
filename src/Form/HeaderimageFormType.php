@@ -31,7 +31,7 @@ use PrestaShopBundle\Form\Admin\Type\TranslatorAwareType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Image;
 
 class HeaderimageFormType extends TranslatorAwareType
 {
@@ -39,34 +39,34 @@ class HeaderimageFormType extends TranslatorAwareType
     {
         $builder
             ->add('index_title', TextType::class, [
-                'label' => $this->trans('Home page title', 'Modules.Ek_Fejlec.Admin'),
-                'help' => $this->trans('Optional', 'Modules.Ek_Fejlec.Admin'),
+                'label' => $this->trans('Home page title', 'Modules.Fejlec.Admin'),
+                'help' => $this->trans('Optional', 'Modules.Fejlec.Admin'),
                 'required' => false,
             ])
             ->add('index_subtitle', TextType::class, [
-                'label' => $this->trans('Home page subtitle', 'Modules.Ek_Fejlec.Admin'),
-                'help' => $this->trans('Optional', 'Modules.Ek_Fejlec.Admin'),
+                'label' => $this->trans('Home page subtitle', 'Modules.Fejlec.Admin'),
+                'help' => $this->trans('Optional', 'Modules.Fejlec.Admin'),
                 'required' => false,
             ])
             ->add('index_image', FileType::class, [
-                'help' => $this->trans('Allowed file formats: webp, png, jpeg/jpg.', 'Modules.Ek_Fejlec.Admin'),
-                'constraints' => [new File(extensions: ['webp', 'png', 'jpg', 'JPEG', 'jpeg', 'PNG', 'JPG'])],
+                'help' => $this->trans('Preferred formats: webp, png, jpeg/jpg.', 'Modules.Fejlec.Admin'),
+                'constraints' => [new Image()],
                 'mapped' => false,
                 'required' => false,
             ])
             ->add('about_title', TextType::class, [
-                'label' => $this->trans('About page title', 'Modules.Ek_Fejlec.Admin'),
-                'help' => $this->trans('Optional', 'Modules.Ek_Fejlec.Admin'),
+                'label' => $this->trans('About page title', 'Modules.Fejlec.Admin'),
+                'help' => $this->trans('Optional', 'Modules.Fejlec.Admin'),
                 'required' => false,
             ])
             ->add('about_subtitle', TextType::class, [
-                'label' => $this->trans('About page subtitle', 'Modules.Ek_Fejlec.Admin'),
-                'help' => $this->trans('Optional', 'Modules.Ek_Fejlec.Admin'),
+                'label' => $this->trans('About page subtitle', 'Modules.Fejlec.Admin'),
+                'help' => $this->trans('Optional', 'Modules.Fejlec.Admin'),
                 'required' => false,
             ])
             ->add('about_image', FileType::class, [
-                'help' => $this->trans('Allowed file formats: webp, png, jpeg/jpg.', 'Modules.Ek_Fejlec.Admin'),
-                'constraints' => [new File(extensions: ['webp', 'png', 'jpg', 'JPEG', 'jpeg', 'PNG', 'JPG'])],
+                'help' => $this->trans('Preferred formats: webp, png, jpeg/jpg.', 'Modules.Fejlec.Admin'),
+                'constraints' => [new Image()],
                 'mapped' => false,
                 'required' => false,
             ]);

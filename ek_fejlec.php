@@ -40,13 +40,13 @@ class Ek_Fejlec extends Module
 
         parent::__construct();
 
-        $this->displayName = $this->trans('Headerimage', [], 'Modules.Ek_Fejlec.Admin');
-        $this->description = $this->trans('Full width header image.', [], 'Modules.Ek_Fejlec.Admin');
+        $this->displayName = $this->trans('Headerimage', [], 'Modules.Fejlec.Admin');
+        $this->description = $this->trans('Full width header image.', [], 'Modules.Fejlec.Admin');
 
-        $this->confirmUninstall = $this->trans('Are you sure you want to uninstall?', [], 'Modules.Ek_Fejlec.Admin');
+        $this->confirmUninstall = $this->trans('Are you sure you want to uninstall?', [], 'Modules.Fejlec.Admin');
 
         if (!Configuration::get('MYMODULE_NAME')) {
-            $this->warning = $this->trans('No name provided.', [], 'Modules.Ek_Fejlec.Admin');
+            $this->warning = $this->trans('No name provided.', [], 'Modules.Fejlec.Admin');
         }
     }
 
