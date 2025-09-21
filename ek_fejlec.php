@@ -50,6 +50,11 @@ class Ek_Fejlec extends Module
         }
     }
 
+    public function isUsingNewTranslationSystem(): bool
+    {
+        return true;
+    }
+
     public function install()
     {
         if (Shop::isFeatureActive()) {
@@ -69,18 +74,7 @@ class Ek_Fejlec extends Module
             parent::uninstall()
             && $this->unregisterHook('displayWrapperTop')
             && $this->unregisterHook('actionFrontControllerSetMedia')
-            && $this->deleteLocalMedia()
             && Configuration::deleteByName('MYMODULE_NAME');
-    }
-
-    protected function deleteLocalMedia()
-    {
-        $images = glob(__DIR__ . '/images/*.{webp,png,jpeg,jpg,JPG,JPEG}', \GLOB_BRACE);
-        foreach ($images as $image) {
-            unlink($image);
-        }
-
-        return true;
     }
 
     public function getContent()
