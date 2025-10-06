@@ -19,26 +19,24 @@
  * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  *}
 
-<!-- Block ek_fejlec -->
 {if {$page.page_name} === "index"}
-    <div id="ek_fejlec_block_home" class="block">
-        {if isset($ek_fejlec_index_image)}
-            <img src="{$ek_fejlec_index_image}">
+    <div id="headerbar_block_home" class="block">
+        {if isset($headerbar_index_image)}
+            <img src="{$headerbar_index_image}">
         {/if}
         <div class="text_block">
-            <h4>{$ek_fejlec_index_title}</h4>
-            <p>{$ek_fejlec_index_subtitle}</p>
+            <h4>{$headerbar_index_title}</h4>
+            <p>{$headerbar_index_subtitle}</p>
         </div>
     </div>
 {else if {$page.body_classes["cms-id-4"]} == {true}}
-    <div id="ek_fejlec_block_home" class="block">
-        {if isset($ek_fejlec_about_image)}
-            <img src="{$ek_fejlec_about_image}">
+    <div id="headerbar_block_home" class="block">
+        {if isset($headerbar_about_image)}
+            <img src="{$headerbar_about_image}">
         {/if}
         <div class="text_block">
-            <h4>{$ek_fejlec_about_title}</h4>
-            <p>{$ek_fejlec_index_subtitle}</p>
+            <h4>{$headerbar_about_title}</h4>
+            <p>{$headerbar_index_subtitle}</p>
         </div>
     </div>
 {/if}
-<!-- /Block ek_fejlec -->

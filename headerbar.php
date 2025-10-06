@@ -23,14 +23,14 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-class Ek_Fejlec extends Module
+class Headerbar extends Module
 {
     public function __construct()
     {
-        $this->name = 'ek_fejlec';
+        $this->name = 'headerbar';
         $this->tab = 'front_office_features';
-        $this->version = '1.0.0';
-        $this->author = 'Simon Fouilleul';
+        $this->version = '1.0.1';
+        $this->author = 'Jeremy Dobberman';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = [
             'min' => '9.0.0',
@@ -40,13 +40,13 @@ class Ek_Fejlec extends Module
 
         parent::__construct();
 
-        $this->displayName = $this->trans('Headerimage', [], 'Modules.Fejlec.Admin');
-        $this->description = $this->trans('Full width header image.', [], 'Modules.Fejlec.Admin');
+        $this->displayName = $this->trans('Headerimage', [], 'Modules.Headerbar.Admin');
+        $this->description = $this->trans('Full width header image.', [], 'Modules.Headerbar.Admin');
 
-        $this->confirmUninstall = $this->trans('Are you sure you want to uninstall?', [], 'Modules.Fejlec.Admin');
+        $this->confirmUninstall = $this->trans('Are you sure you want to uninstall?', [], 'Modules.Headerbar.Admin');
 
-        if (!Configuration::get('MYMODULE_NAME')) {
-            $this->warning = $this->trans('No name provided.', [], 'Modules.Fejlec.Admin');
+        if (!Configuration::get('HEADERBAR_NAME')) {
+            $this->warning = $this->trans('No name provided.', [], 'Modules.Headerbar.Admin');
         }
     }
 
@@ -65,7 +65,7 @@ class Ek_Fejlec extends Module
             parent::install()
             && $this->registerHook('displayWrapperTop')
             && $this->registerHook('actionFrontControllerSetMedia')
-            && Configuration::updateValue('MYMODULE_NAME', 'Headerimage');
+            && Configuration::updateValue('HEADERBAR_NAME', 'Headerimage');
     }
 
     public function uninstall()
@@ -74,7 +74,7 @@ class Ek_Fejlec extends Module
             parent::uninstall()
             && $this->unregisterHook('displayWrapperTop')
             && $this->unregisterHook('actionFrontControllerSetMedia')
-            && Configuration::deleteByName('MYMODULE_NAME');
+            && Configuration::deleteByName('HEADERBAR_NAME');
     }
 
     public function getContent()
@@ -86,23 +86,23 @@ class Ek_Fejlec extends Module
     public function hookDisplayWrapperTop()
     {
         $this->context->smarty->assign([
-            'ek_fejlec_name' => Configuration::get('MYMODULE_NAME'),
-            'ek_fejlec_index_title' => Configuration::get('EK_FEJLEC_INDEX_TITLE'),
-            'ek_fejlec_index_subtitle' => Configuration::get('EK_FEJLEC_INDEX_SUBTITLE'),
-            'ek_fejlec_index_image' => Configuration::get('EK_FEJLEC_INDEX_IMAGE'),
-            'ek_fejlec_about_title' => Configuration::get('EK_FEJLEC_ABOUT_TITLE'),
-            'ek_fejlec_about_subtitle' => Configuration::get('EK_FEJLEC_ABOUT_SUBTITLE'),
-            'ek_fejlec_about_image' => Configuration::get('EK_FEJLEC_ABOUT_IMAGE'),
+            'headerbar_name' => Configuration::get('HEADERBAR_NAME'),
+            'headerbar_index_title' => Configuration::get('HEADERBAR_INDEX_TITLE'),
+            'headerbar_index_subtitle' => Configuration::get('HEADERBAR_INDEX_SUBTITLE'),
+            'headerbar_index_image' => Configuration::get('HEADERBAR_INDEX_IMAGE'),
+            'headerbar_about_title' => Configuration::get('HEADERBAR_ABOUT_TITLE'),
+            'headerbar_about_subtitle' => Configuration::get('HEADERBAR_ABOUT_SUBTITLE'),
+            'headerbar_about_image' => Configuration::get('HEADERBAR_ABOUT_IMAGE'),
         ]);
 
-        return $this->display(__FILE__, 'ek_fejlec.tpl');
+        return $this->display(__FILE__, 'headerbar.tpl');
     }
 
     public function hookActionFrontControllerSetMedia()
     {
         $this->context->controller->registerStylesheet(
-            'ek_fejlec-style',
-            'modules/' . $this->name . '/views/css/ek_fejlec.css',
+            'headerbar-style',
+            'modules/' . $this->name . '/views/css/headerbar.css',
             [
                 'media' => 'all',
                 'priority' => 1000,

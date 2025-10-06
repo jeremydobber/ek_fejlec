@@ -7,8 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'PrestaShop\\Module\\Ek_Fejlec\\Controller\\HeaderimageController' => $baseDir . '/src/Controller/HeaderimageController.php',
-    'PrestaShop\\Module\\Ek_Fejlec\\Form\\HeaderimageFormType' => $baseDir . '/src/Form/HeaderimageFormType.php',
-    'PrestaShop\\Module\\Ek_Fejlec\\Form\\HeaderimageTextDataConfiguration' => $baseDir . '/src/Form/HeaderimageTextDataConfiguration.php',
-    'PrestaShop\\Module\\Ek_Fejlec\\Form\\HeaderimageTextFormDataProvider' => $baseDir . '/src/Form/HeaderimageTextFormDataProvider.php',
+    'PrestaShop\\Module\\Headerbar\\Controller\\HeaderimageController' => $baseDir . '/src/Controller/HeaderimageController.php',
+    'PrestaShop\\Module\\Headerbar\\Form\\HeaderimageFormType' => $baseDir . '/src/Form/HeaderimageFormType.php',
+    'PrestaShop\\Module\\Headerbar\\Form\\HeaderimageTextDataConfiguration' => $baseDir . '/src/Form/HeaderimageTextDataConfiguration.php',
+    'PrestaShop\\Module\\Headerbar\\Form\\HeaderimageTextFormDataProvider' => $baseDir . '/src/Form/HeaderimageTextFormDataProvider.php',
 );

@@ -1,11 +1,11 @@
-#ek_fejlec_block_home {
+#headerbar_block_home {
   width: 100%;
   height: fit-content;
   position: relative;
   box-shadow: 0 0 30px black;
 }
 
-#ek_fejlec_block_home .text_block {
+#headerbar_block_home .text_block {
   text-transform: uppercase;
   position: absolute;
   top: 42%;
@@ -15,15 +15,15 @@
   z-index: 50;
 }
 
-#ek_fejlec_block_home h4 {
+#headerbar_block_home h4 {
   font-size: 3rem;
 }
 
-#ek_fejlec_block_home p {
+#headerbar_block_home p {
   font-size: 1rem;
 }
 
-#ek_fejlec_block_home img {
+#headerbar_block_home img {
   max-width: 100%;
   height: auto;
 }

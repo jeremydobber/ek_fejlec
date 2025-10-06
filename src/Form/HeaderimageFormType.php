@@ -21,7 +21,7 @@
  */
 declare(strict_types=1);
 
-namespace PrestaShop\Module\Ek_Fejlec\Form;
+namespace PrestaShop\Module\Headerbar\Form;
 
 if (!defined('_PS_VERSION_')) {
     exit;
@@ -39,33 +39,33 @@ class HeaderimageFormType extends TranslatorAwareType
     {
         $builder
             ->add('index_title', TextType::class, [
-                'label' => $this->trans('Home page title', 'Modules.Fejlec.Admin'),
-                'help' => $this->trans('Optional', 'Modules.Fejlec.Admin'),
+                'label' => $this->trans('Home page title', 'Modules.Headerbar.Admin'),
+                'help' => $this->trans('Optional', 'Modules.Headerbar.Admin'),
                 'required' => false,
             ])
             ->add('index_subtitle', TextType::class, [
-                'label' => $this->trans('Home page subtitle', 'Modules.Fejlec.Admin'),
-                'help' => $this->trans('Optional', 'Modules.Fejlec.Admin'),
+                'label' => $this->trans('Home page subtitle', 'Modules.Headerbar.Admin'),
+                'help' => $this->trans('Optional', 'Modules.Headerbar.Admin'),
                 'required' => false,
             ])
             ->add('index_image', FileType::class, [
-                'help' => $this->trans('Preferred formats: webp, png, jpeg/jpg.', 'Modules.Fejlec.Admin'),
+                'help' => $this->trans('Preferred formats: webp, png, jpeg/jpg.', 'Modules.Headerbar.Admin'),
                 'constraints' => [new Image()],
                 'mapped' => false,
                 'required' => false,
             ])
             ->add('about_title', TextType::class, [
-                'label' => $this->trans('About page title', 'Modules.Fejlec.Admin'),
-                'help' => $this->trans('Optional', 'Modules.Fejlec.Admin'),
+                'label' => $this->trans('About page title', 'Modules.Headerbar.Admin'),
+                'help' => $this->trans('Optional', 'Modules.Headerbar.Admin'),
                 'required' => false,
             ])
             ->add('about_subtitle', TextType::class, [
-                'label' => $this->trans('About page subtitle', 'Modules.Fejlec.Admin'),
-                'help' => $this->trans('Optional', 'Modules.Fejlec.Admin'),
+                'label' => $this->trans('About page subtitle', 'Modules.Headerbar.Admin'),
+                'help' => $this->trans('Optional', 'Modules.Headerbar.Admin'),
                 'required' => false,
             ])
             ->add('about_image', FileType::class, [
-                'help' => $this->trans('Preferred formats: webp, png, jpeg/jpg.', 'Modules.Fejlec.Admin'),
+                'help' => $this->trans('Preferred formats: webp, png, jpeg/jpg.', 'Modules.Headerbar.Admin'),
                 'constraints' => [new Image()],
                 'mapped' => false,
                 'required' => false,

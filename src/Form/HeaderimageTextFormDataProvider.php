@@ -21,7 +21,7 @@
  */
 declare(strict_types=1);
 
-namespace PrestaShop\Module\Ek_Fejlec\Form;
+namespace PrestaShop\Module\Headerbar\Form;
 
 if (!defined('_PS_VERSION_')) {
     exit;

@@ -4,17 +4,17 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit0c1148300ea4fa22d2eb5c36fae3641a
+class ComposerStaticInit88ff259eb3d73477596855f63ed39c3a
 {
     public static $prefixLengthsPsr4 = array (
         'P' => 
         array (
-            'PrestaShop\\Module\\Ek_Fejlec\\' => 28,
+            'PrestaShop\\Module\\Headerbar\\' => 28,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'PrestaShop\\Module\\Ek_Fejlec\\' => 
+        'PrestaShop\\Module\\Headerbar\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
@@ -22,18 +22,18 @@ class ComposerStaticInit0c1148300ea4fa22d2eb5c36fae3641a
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'PrestaShop\\Module\\Ek_Fejlec\\Controller\\HeaderimageController' => __DIR__ . '/../..' . '/src/Controller/HeaderimageController.php',
-        'PrestaShop\\Module\\Ek_Fejlec\\Form\\HeaderimageFormType' => __DIR__ . '/../..' . '/src/Form/HeaderimageFormType.php',
-        'PrestaShop\\Module\\Ek_Fejlec\\Form\\HeaderimageTextDataConfiguration' => __DIR__ . '/../..' . '/src/Form/HeaderimageTextDataConfiguration.php',
-        'PrestaShop\\Module\\Ek_Fejlec\\Form\\HeaderimageTextFormDataProvider' => __DIR__ . '/../..' . '/src/Form/HeaderimageTextFormDataProvider.php',
+        'PrestaShop\\Module\\Headerbar\\Controller\\HeaderimageController' => __DIR__ . '/../..' . '/src/Controller/HeaderimageController.php',
+        'PrestaShop\\Module\\Headerbar\\Form\\HeaderimageFormType' => __DIR__ . '/../..' . '/src/Form/HeaderimageFormType.php',
+        'PrestaShop\\Module\\Headerbar\\Form\\HeaderimageTextDataConfiguration' => __DIR__ . '/../..' . '/src/Form/HeaderimageTextDataConfiguration.php',
+        'PrestaShop\\Module\\Headerbar\\Form\\HeaderimageTextFormDataProvider' => __DIR__ . '/../..' . '/src/Form/HeaderimageTextFormDataProvider.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit0c1148300ea4fa22d2eb5c36fae3641a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit0c1148300ea4fa22d2eb5c36fae3641a::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit0c1148300ea4fa22d2eb5c36fae3641a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit88ff259eb3d73477596855f63ed39c3a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit88ff259eb3d73477596855f63ed39c3a::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit88ff259eb3d73477596855f63ed39c3a::$classMap;
 
         }, null, ClassLoader::class);
     }

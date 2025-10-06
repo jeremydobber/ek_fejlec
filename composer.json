@@ -1,17 +1,17 @@
 
 
 {
-  "name": "sfouilleul/ek_fejlec",
-  "description": "Fejléc",
+  "name": "jdobber/headerbar",
+  "description": "Full width header image",
   "license": "AFL-3.0",
   "authors": [
     {
-      "name": "Simon Fouilleul"
+      "name": "Jeremy Dobberman"
     }
   ],
   "autoload": {
     "psr-4": {
-      "PrestaShop\\Module\\Ek_Fejlec\\": "src/"
+      "PrestaShop\\Module\\Headerbar\\": "src/"
     }
   },
   "require": {

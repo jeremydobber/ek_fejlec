@@ -22,7 +22,7 @@
 
 declare(strict_types=1);
 
-namespace PrestaShop\Module\Ek_Fejlec\Controller;
+namespace PrestaShop\Module\Headerbar\Controller;
 
 if (!defined('_PS_VERSION_')) {
     exit;
@@ -39,7 +39,7 @@ class HeaderimageController extends PrestaShopAdminController
 {
     public function index(
         Request $request,
-        #[Autowire(service: 'prestashop.module.ek_fejlec.form.headerimage_text_form_data_handler')]
+        #[Autowire(service: 'prestashop.module.headerbar.form.headerimage_text_form_data_handler')]
         FormHandlerInterface $textFormDataHandler,
     ): Response {
         $textForm = $textFormDataHandler->getForm();
@@ -51,7 +51,7 @@ class HeaderimageController extends PrestaShopAdminController
                     $file = $textForm->get($imageFile)->getData();
                     $filePath = $this->upload($file, $imageFile);
                     $config_key = strtoupper($imageFile);
-                    \Configuration::updateValue("EK_FEJLEC_{$config_key}", $filePath);
+                    \Configuration::updateValue("HEADERBAR_{$config_key}", $filePath);
                 }
             }
 
@@ -67,7 +67,7 @@ class HeaderimageController extends PrestaShopAdminController
             $this->addFlashErrors($errors);
         }
 
-        return $this->render('@Modules/ek_fejlec/views/templates/admin/headerimage_conf_form.html.twig', [
+        return $this->render('@Modules/headerbar/views/templates/admin/headerimage_conf_form.html.twig', [
             'HeaderimageConfigurationForm' => $textForm->createView(),
         ]);
     }
@@ -76,8 +76,8 @@ class HeaderimageController extends PrestaShopAdminController
     {
         $newFilename = $form_field . '.' . $uploadedFile->guessExtension();
         $module_file_dir = 'images';
-        $relpath = _MODULE_DIR_ . 'ek_fejlec' . DIRECTORY_SEPARATOR . $module_file_dir;
-        $abspath = _PS_MODULE_DIR_ . 'ek_fejlec' . DIRECTORY_SEPARATOR . $module_file_dir;
+        $relpath = _MODULE_DIR_ . 'headerbar' . DIRECTORY_SEPARATOR . $module_file_dir;
+        $abspath = _PS_MODULE_DIR_ . 'headerbar' . DIRECTORY_SEPARATOR . $module_file_dir;
         $images = glob($abspath . DIRECTORY_SEPARATOR . $form_field . '\..*', \GLOB_BRACE);
         foreach ($images as $image) {
             unlink($image);
