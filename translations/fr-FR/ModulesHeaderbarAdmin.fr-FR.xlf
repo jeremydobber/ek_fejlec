@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="ModulesHeaderbarAdmin.xlf" source-language="fr-FR" target-language="fr-FR" datatype="plaintext">
+    <body>
+      <trans-unit id="60199202ba4764409a7b6dfc15e0d675">
+        <source>About page image</source>
+        <target>Image de fond de la page « À propos »</target>
+      </trans-unit>
+      <trans-unit id="90e3130fc4610140ab9fbf961e42837f">
+        <source>About page subtitle</source>
+        <target>Sous-titre de la page « À propos »</target>
+      </trans-unit>
+      <trans-unit id="b7110e32d7bc7967ad7ba64cba55dd0e">
+        <source>About page title</source>
+        <target>Titre de la page « À propos »</target>
+      </trans-unit>
+      <trans-unit id="876f23178c29dc2552c0b48bf23cd9bd">
+        <source>Are you sure you want to uninstall?</source>
+        <target>Êtes-vous certain de vouloir désinstaller ?</target>
+      </trans-unit>
+      <trans-unit id="5fdc5fceac411aea9588b6581fbd6e70">
+        <source>Full width header image.</source>
+        <target>Section pleine largeur avec image de fond.</target>
+      </trans-unit>
+      <trans-unit id="63b6609a963af3d0bc95069cdfa03739">
+        <source>Headerimage</source>
+        <target>Entêtes</target>
+      </trans-unit>
+      <trans-unit id="7f404b86135f246d21f2469e8cb9f1b3">
+        <source>Headerimage settings</source>
+        <target>Paramètres des entêtes</target>
+      </trans-unit>
+      <trans-unit id="c7390726ae846a1c0f208dd6d6ae52a4">
+        <source>Home page image</source>
+        <target>Image de fond de la page d'accueil</target>
+      </trans-unit>
+      <trans-unit id="c71b773f206411f57fbf4ae50fa0c5b4">
+        <source>Home page subtitle</source>
+        <target>Sous-titre de la page d'accueil</target>
+      </trans-unit>
+      <trans-unit id="2db0c8016b763a6b79c75b477b8bba9a">
+        <source>Home page title</source>
+        <target>Titre de la page d'accueil</target>
+      </trans-unit>
+      <trans-unit id="47fc9faa9dcc877793ae2feb7410cf60">
+        <source>No name provided.</source>
+        <target>Nom manquant.</target>
+      </trans-unit>
+      <trans-unit id="ebb061953c0454b2c8ee7b0ac615ebcd">
+        <source>Optional</source>
+        <target>Optionnel</target>
+      </trans-unit>
+      <trans-unit id="783f288348a720ae7ccffc15a788a59c">
+        <source>Preferred formats: webp, png, jpeg/jpg.</source>
+        <target>Formats recommandés : webp, png, jpeg/jpg.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

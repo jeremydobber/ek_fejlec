@@ -49,6 +49,7 @@ class HeaderimageFormType extends TranslatorAwareType
                 'required' => false,
             ])
             ->add('index_image', FileType::class, [
+                'label' => $this->trans('Home page image', 'Modules.Headerbar.Admin'),
                 'help' => $this->trans('Preferred formats: webp, png, jpeg/jpg.', 'Modules.Headerbar.Admin'),
                 'constraints' => [new Image()],
                 'mapped' => false,
@@ -65,6 +66,7 @@ class HeaderimageFormType extends TranslatorAwareType
                 'required' => false,
             ])
             ->add('about_image', FileType::class, [
+                'label' => $this->trans('About page image', 'Modules.Headerbar.Admin'),
                 'help' => $this->trans('Preferred formats: webp, png, jpeg/jpg.', 'Modules.Headerbar.Admin'),
                 'constraints' => [new Image()],
                 'mapped' => false,
