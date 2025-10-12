@@ -37,6 +37,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class HeaderimageController extends PrestaShopAdminController
 {
+    private $module_images_dir = 'images';
+
     public function index(
         Request $request,
         #[Autowire(service: 'prestashop.module.headerbar.form.headerimage_text_form_data_handler')]
@@ -45,13 +47,16 @@ class HeaderimageController extends PrestaShopAdminController
         $textForm = $textFormDataHandler->getForm();
         $textForm->handleRequest($request);
 
+        $module_images_abspath = _PS_MODULE_DIR_ . 'headerbar' . DIRECTORY_SEPARATOR . $this->module_images_dir;
+
         if ($textForm->isSubmitted() && $textForm->isValid()) {
             foreach (['index_image', 'about_image'] as $imageFile) {
                 if (!is_null($textForm->get($imageFile)->getData())) {
                     $file = $textForm->get($imageFile)->getData();
-                    $filePath = $this->upload($file, $imageFile);
+                    $this->upload($file, $module_images_abspath, $imageFile);
+                    $this->generateResponsiveImages($module_images_abspath, $imageFile);
                     $config_key = strtoupper($imageFile);
-                    \Configuration::updateValue("HEADERBAR_{$config_key}", $filePath);
+                    \Configuration::updateValue("HEADERBAR_{$config_key}", $imageFile);
                 }
             }
 
@@ -72,22 +77,37 @@ class HeaderimageController extends PrestaShopAdminController
         ]);
     }
 
-    public function upload(UploadedFile $uploadedFile, string $form_field)
+    private function upload(UploadedFile $uploadedFile, string $module_image_abspath, string $form_field)
     {
         $newFilename = $form_field . '.' . $uploadedFile->guessExtension();
-        $module_file_dir = 'images';
-        $relpath = _MODULE_DIR_ . 'headerbar' . DIRECTORY_SEPARATOR . $module_file_dir;
-        $abspath = _PS_MODULE_DIR_ . 'headerbar' . DIRECTORY_SEPARATOR . $module_file_dir;
-        $images = glob($abspath . DIRECTORY_SEPARATOR . $form_field . '\..*', \GLOB_BRACE);
+
+        // Should force conversion to webp to use later in gd imagegeneration function below
+
+        // Empying destination directory of old images.
+        $images = glob($module_image_abspath . DIRECTORY_SEPARATOR . $form_field . '.*\..*', \GLOB_BRACE);
         foreach ($images as $image) {
             unlink($image);
         }
 
         $uploadedFile->move(
-            $abspath,
+            $module_image_abspath,
             $newFilename,
         );
 
-        return $relpath . DIRECTORY_SEPARATOR . $newFilename;
+        return true;
+    }
+
+    private function generateResponsiveImages(string $module_images_abspath, string $fileName)
+    {
+        $sizes = [2560, 1920, 1280, 768];
+
+        // Function is assuming image is in webp format
+        $gd = imagecreatefromwebp($module_images_abspath . DIRECTORY_SEPARATOR . $fileName . '.webp');
+
+        foreach ($sizes as $size) {
+            $rescaled = imagescale($gd, $size);
+            $newFileName = $fileName . '_' . $size . '.webp';
+            imagewebp($rescaled, $module_images_abspath . DIRECTORY_SEPARATOR . $newFileName, 90);
+        }
     }
 }
