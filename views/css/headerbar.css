@@ -1,29 +1,7 @@
-#headerbar_block_home {
-  width: 100%;
-  height: fit-content;
-  position: relative;
+#headerbar-block {
   box-shadow: 0 0 30px black;
 }
 
-#headerbar_block_home .text_block {
-  text-transform: uppercase;
-  position: absolute;
+.text-block {
   top: 42%;
-  width: 100% !important;
-  text-align: center;
-  margin: auto;
-  z-index: 50;
-}
-
-#headerbar_block_home h4 {
-  font-size: 3rem;
-}
-
-#headerbar_block_home p {
-  font-size: 1rem;
-}
-
-#headerbar_block_home img {
-  max-width: 100%;
-  height: auto;
 }
