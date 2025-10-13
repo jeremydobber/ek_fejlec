@@ -29,7 +29,7 @@ class Headerbar extends Module
     {
         $this->name = 'headerbar';
         $this->tab = 'front_office_features';
-        $this->version = '1.1.0';
+        $this->version = '1.0.2';
         $this->author = 'Jeremy Dobberman';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = [
